@@ -5,23 +5,36 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { useState } from 'react';
+import AppNavigation from './src/navigations/Navigation';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+    const [showSplash, setShowSplash] = useState(true);
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+        <>
+      {/* {showSplash ? (
+        <Splash onFinish={() => setShowSplash(false)} />
+      ) : (
+        <View style={styles.main}>
+          <Text style={styles.mainText}>Welcome to the App!</Text>
+        </View>
+      )} */}
+      <AppNavigation />
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mainText: {
+    fontSize: 24,
+    color: '#333',
   },
 });
 
