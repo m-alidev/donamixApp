@@ -1,41 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import { useState } from 'react';
-import AppNavigation from './src/navigations/Navigation';
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import AppNavigator from './src/navigation/AppNavigator';
+import store from './src/redux/store';
 
 function App() {
-    const [showSplash, setShowSplash] = useState(true);
   return (
-        <>
-      {/* {showSplash ? (
-        <Splash onFinish={() => setShowSplash(false)} />
-      ) : (
-        <View style={styles.main}>
-          <Text style={styles.mainText}>Welcome to the App!</Text>
-        </View>
-      )} */}
-      <AppNavigation />
-    </>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <AppNavigator />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  mainText: {
-    fontSize: 24,
-    color: '#333',
-  },
-});
 
 export default App;
